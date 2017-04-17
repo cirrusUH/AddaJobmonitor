@@ -48,7 +48,7 @@ in the `src/`.
 Using a Qt SDK for Windows, MinGW kit works well.
 
 The Windows version finds currently open log files via file handles of the adda jobs running. An external tool is 
-invoked: you need a copy of `handle.exe` and place it into the system wide search path (C:\WINDOWS is a good location).
+invoked: you need a copy of `handle.exe`. Place it into the system wide search path (C:\WINDOWS is a good location).
 
 Get handle.exe or handle64.exe from here: 
 [https://technet.microsoft.com/en-us/sysinternals/handle.aspx](https://technet.microsoft.com/en-us/sysinternals/handle.aspx)
@@ -56,17 +56,19 @@ Windows XP: The handle.exe published on the above link no longer works on win XP
 
 
 ## Remote Access
-To avoid any security implications when using the job manger, remote access is 'outsourced' to a platform provided Secure Shell installation (OpenSSH [www.openssh.com] for example), no passwords are stored or managed inside the code. Instead, you need to have password less access for every remote account you want to use set up. Commands such as:
+To avoid any security implications when using the job manger, remote access is 'outsourced' to the installed Secure Shell (OpenSSH [www.openssh.com] for example), no passwords are stored or managed inside the code. Instead, you need to have password-less access working for every remote account you want to use. Commands such as:
 
 `ssh user0@my-cluster.world.com echo "Hello"`
 
 must execute correctly on the remote target without locally entering a password from your terminal. This can be achieved by configuring key based logins. See the man page for ssh-copy-id and ssh-add and your Linux distribution's way of registering ssh keys for a session (you only need to type in a passphrase once per session). Never generate ssh keys without passphrase. 
 
-In brief you generate ssh keys with ssh-keygen, add the public key to the remote .ssh/authorized_hosts (check file permissions in case you have created it yourself and it does not work) file or use ssh-copy-id to automate it. You then want to register your private key with the current user session in order you only need to enter its passpharse once. ssh-add or a distribution specific method is used for this. 
+In brief you generate ssh keys with ssh-keygen, add the public key to the remote .ssh/authorized_hosts (check file permissions in case you have created it yourself and it does not work) file or use ssh-copy-id to automate it. You then want to register your private key with the current user session so you only need to enter its passpharse once. ssh-add or a distribution specific method is used for this. 
 
-On Windows hosts the job manager relies on an installation of PuTTY ([www.putty.org](http://www.putty.org) and its plink command (which per default is in the system wide search PATH) to communicate. 
+On Windows hosts the job manager relies on an installation of PuTTY(2) and its plink command (which per default is in the system wide search PATH) to communicate. 
 
 Also here password less access for the specified remote accounts (using Pageant in this case) needs to be set up and work correctly before starting the job manager. In brief, you use PuTTYgen to generate a key pair, add it to the .ssh/authorized_hosts file and register the key with Pageant prior to starting the job manager. 
+
+[(2) PuTTy] (http://www.putty.org)
 
 ## Usage
 The monitor relies on correct capturing of the standard output channels of the jobs. The jobmanager will locate and subsequently display the staus of a running job using these output files (see section below). The main focus and best tested platform is the job manager running on Linux and connecting to a cluster that has a Torque resource manager (or understands commands qstat, qhold, qdel and qrls) via password less ssh. 
