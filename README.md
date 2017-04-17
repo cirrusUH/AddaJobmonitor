@@ -66,19 +66,19 @@ In brief you generate ssh keys with ssh-keygen, add the public key to the remote
 
 On Windows hosts the job manager relies on an installation of PuTTY(2) and its plink command (which per default is in the system wide search PATH) to communicate. 
 
-Also here password less access for the specified remote accounts (using Pageant in this case) needs to be set up and work correctly before starting the job manager. In brief, you use PuTTYgen to generate a key pair, add it to the .ssh/authorized_hosts file and register the key with Pageant prior to starting the job manager. 
+Also here password-less access for the specified remote accounts (using Pageant in this case) needs to be set up and work correctly before starting the job manager. In brief, you use PuTTYgen to generate a key pair, add it to the .ssh/authorized_hosts file and register the key with Pageant prior to starting the job manager. 
 
 [(2) PuTTy] (http://www.putty.org)
 
 ## Usage
-The monitor relies on correct capturing of the standard output channels of the jobs. The jobmanager will locate and subsequently display the staus of a running job using these output files (see section below). The main focus and best tested platform is the job manager running on Linux and connecting to a cluster that has a Torque resource manager (or understands commands qstat, qhold, qdel and qrls) via password less ssh. 
+The monitor relies on correctly capturing the standard output of the jobs. The jobmanager will locate and subsequently display the status of a running job using these output files (see section below). The main focus and best tested platform is the job manager running on Linux and connecting to a cluster that has a Torque resource manager (or understands commands qstat, qhold, qdel and qrls) via password-less ssh. 
 
 
 ## Capturing ADDA's output
 File system caching may delay information getting written to disk, so convergence information might only become available after some time. 
 
 ### Linux without Torque resource manager
-The monitor will find the PID and the working directory (using pwdx), it the looks for a file 
+The monitor will find the PID and the working directory (using pwdx), it then looks for a file 
 out-nnnnnn, containing Adda's standard output. To capture this, start Adda in a wrapper shell script, for bash:
 
 ```
