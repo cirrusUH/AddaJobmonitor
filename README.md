@@ -5,7 +5,7 @@ A Qt client to monitor and manage ADDA runs locally and remotely.
 A Qt GUI based runtime control and supervision for Adda(1) jobs running remotely 
 on a cluster, or plain Linux machine or, locally on Windows or Linux. 
 
-[1](https://github.com/adda-team/adda])
+[(1) Adda](https://github.com/adda-team/adda])
 
 ## Supported systems
 Monitoring works for local or remote Linux machines and clusters that run a Torque resouce manager and
