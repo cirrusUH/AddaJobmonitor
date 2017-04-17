@@ -85,7 +85,7 @@ exec /opt/adda13b4/src/seq/adda -grid 90 > out-$$
 ```
 
 ### Machines with Torque scheduler
-The monitor will look for a adda jobs in the queue belonging to you and the retrieve its `$PBS_O_WORKDIR` and looks for a file `out-$PBS_JOBID` there. A job submission script should include a std-out redirection to 
+The monitor will look for a Adda jobs in the queue belonging to the user in the given account and then retrieve its `$PBS_O_WORKDIR` to look for a file `out-$PBS_JOBID` there. A job submission script should include a std-out redirection to 
 `$PBS_O_WORKDIR\out-$PBS_JOBID`, such as: 
 
 ```
