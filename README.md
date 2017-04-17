@@ -87,7 +87,7 @@ exec /opt/adda13b4/src/seq/adda -grid 90 > out-$$
 ```
 
 ### Machines with Torque scheduler
-The monitor will look for a Adda jobs in the queue belonging to the user in the given account and then retrieve its `$PBS_O_WORKDIR` to look for a file `out-$PBS_JOBID` there. A job submission script should include a std-out redirection to 
+The monitor will look for Adda jobs in the queue belonging to the user in the given account and then retrieve its `$PBS_O_WORKDIR` to look for a file `out-$PBS_JOBID` there. A job submission script should include a std-out redirection to 
 `$PBS_O_WORKDIR\out-$PBS_JOBID`, such as: 
 
 ```
@@ -107,7 +107,7 @@ The buttons [kill], [release], and [hold] invoke the equivalent commands on the 
 
 The [Refresh] button, re-retrieves the job information. To change the displayed machine, use the 'Accounts' dropdown menu.
 
-The timeout for ssh commands is 20s, on busy cluster head nodes this sometimes leads to failing ssh commands. In this case try repeating them, by re-clicking. Also be aware that some administrators have a rate-limited ssh logins, in order not to trigger such a limit and get blokced ssh commands are rate limited.
+The timeout for ssh commands is 20s, on busy cluster head nodes this sometimes leads to failing ssh commands. In this case try repeating them, by re-clicking. Also be aware that some administrators have a rate-limited ssh logins, in order not to trigger such a limit and get blocked ssh commands are rate limited.
 
 The [Save plot] button allows to save the convergence plots into a PDF file.
 
